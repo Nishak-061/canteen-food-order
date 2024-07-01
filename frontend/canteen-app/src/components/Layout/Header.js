@@ -104,7 +104,7 @@ const Header = () => {
                     <ul className="dropdown-menu">
                       <li>
                         <NavLink
-                          to={`${config.API_BASE_URL}/dashboard/${
+                          to={`/dashboard/${
                             auth?.user?.role === 1 ? "admin" : "user"
                           }`}
                           className="dropdown-item"

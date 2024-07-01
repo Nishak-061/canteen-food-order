@@ -5,10 +5,12 @@ import { useAuth } from "../../context/auth";
 import axios from "axios";
 import toast from "react-hot-toast";
 import config from "../../config";
+import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
   //context
   const [auth, setAuth] = useAuth();
+  const navigate = useNavigate();
   //state
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -42,6 +44,7 @@ const Profile = () => {
         ls.user = data.updatedUser;
         localStorage.setItem("auth", JSON.stringify(ls));
         toast.success("Profile Updated successfully");
+        navigate("/")
       }
     } catch (error) {
       console.log(error);
