@@ -7,6 +7,8 @@ import { Prices } from "../components/Prices";
 import { useCart } from "../context/cart";
 import { toast } from "react-hot-toast";
 import HomeBootstrap from "./user/HomeBootstrap";
+import useFetchData from "../hooks/useFetchData";
+import config from "../config";
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -39,7 +41,7 @@ const HomePage = () => {
   const getAllProducts = async () => {
     try {
       setLoading(true);
-      const { data } = await axios.get(`/api/v1/product/product-list/${page}`);
+      const { data } = await axios.get(`${config.API_BASE_URL}/api/v1/product/product-list/1`);
       setLoading(false);
       setProducts(data.products);
     } catch (error) {
@@ -66,7 +68,7 @@ const HomePage = () => {
   const loadMore = async () => {
     try {
       setLoading(true);
-      const { data } = await axios.get(`/api/v1/product/product-list/${page}`);
+      const { data } = await axios.get(`${config.API_BASE_URL}/api/v1/product/product-list/${page}`);
       setLoading(false);
       setProducts([...products, ...data?.products]);
     } catch (error) {
