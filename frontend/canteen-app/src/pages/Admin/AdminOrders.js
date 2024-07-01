@@ -5,7 +5,9 @@ import AdminMenu from "../../components/Layout/AdminMenu";
 import Layout from "../../components/Layout/Layout";
 import { useAuth } from "../../context/auth";
 import moment from "moment";
+
 import { Select } from "antd";
+import config from "../../config";
 const { Option } = Select;
 const AdminOrders = () => {
   const [status, setStatus] = useState([
@@ -20,7 +22,7 @@ const AdminOrders = () => {
   const [auth, setAuth] = useAuth();
   const getOrders = async () => {
     try {
-      const { data } = await axios.get("/api/v1/auth/all-orders");
+      const { data } = await axios.get(`${config.API_BASE_URL}/api/v1/auth/all-orders`);
       setOrders(data);
     } catch (error) {
       console.log(error);
@@ -33,7 +35,7 @@ const AdminOrders = () => {
 
   const handleChange = async (orderId, value) => {
     try {
-      const { data } = await axios.put(`/api/v1/auth/order-status/${orderId}`, {
+      const { data } = await axios.put(`${config.API_BASE_URL}/api/v1/auth/order-status/${orderId}`, {
         status: value,
       });
       getOrders();
@@ -91,7 +93,7 @@ const AdminOrders = () => {
                     <div className="row mb-2 p-6 card flex-row">
                       <div className="col-md-3">
                         <img
-                          src={`/api/v1/product/product-photo/${p._id}`}
+                          src={`${config.API_BASE_URL}/api/v1/product/product-photo/${p._id}`}
                           className="card-img-top"
                           alt={p.name}
                           width="100px"

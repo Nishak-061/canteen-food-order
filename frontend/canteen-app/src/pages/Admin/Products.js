@@ -4,6 +4,7 @@ import Layout from "../../components/Layout/Layout";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
+import config from "../../config";
 const Products = () => {
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(0);
@@ -13,7 +14,7 @@ const Products = () => {
   //get all products
   const getAllProducts = async () => {
     try {
-      const { data } = await axios.get("/api/v1/product/get-product");
+      const { data } = await axios.get(`${config.API_BASE_URL}/api/v1/product/get-product`);
       setProducts(data.products);
     } catch (error) {
       console.log(error);
@@ -30,7 +31,7 @@ const Products = () => {
   //getTotal Count
   const getTotal = async () => {
     try {
-      const { data } = await axios.get("/api/v1/product/product-count");
+      const { data } = await axios.get(`${config.API_BASE_URL}/api/v1/product/product-count`);
       setTotal(data?.total);
     } catch (error) {
       console.log(error);
@@ -45,7 +46,7 @@ const Products = () => {
   const loadMore = async () => {
     try {
       setLoading(true);
-      const { data } = await axios.get(`/api/v1/product/product-list/${page}`);
+      const { data } = await axios.get(`${config.API_BASE_URL}/api/v1/product/product-list/${page}`);
       setLoading(false);
       setProducts([...products, ...data?.products]);
     } catch (error) {
@@ -80,7 +81,7 @@ const Products = () => {
               >
                 <div className="card m-2" style={{ width: "18rem" }}>
                   <img
-                    src={`/api/v1/product/product-photo/${p._id}`}
+                    src={`${config.API_BASE_URL}/api/v1/product/product-photo/${p._id}`}
                     className="card-img-top"
                     alt={p.name}
                   />
