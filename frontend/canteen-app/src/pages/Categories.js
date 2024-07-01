@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import useCategory from "../hooks/useCategory";
 import Layout from "../components/Layout/Layout";
+import config from "../config";
 
 const Categories = () => {
   const categories = useCategory();
@@ -24,7 +25,7 @@ const Categories = () => {
                     <i className="fa fa-hamburger text-warning"></i>
                     {c.name}
                   </h5>
-                  <Link to={`/category/${c.slug}`} className="btn btn-danger">
+                  <Link to={`${config.API_BASE_URL}/category/${c.slug}`} className="btn btn-danger">
                     View Category
                   </Link>
                 </div>
