@@ -49,12 +49,18 @@ const CategoryProduct = () => {
                       <small>{p.description}</small>
                     </p>
                     <p className="card-text">₹ {p.price}</p>
-                    <button
+                    {/* <button
                       className="btn btn-primary"
-                      onClick={() => navigate(`${config.API_BASE_URL}/product/${p.slug}`)}
+                      onClick={() => navigate(`/product/${p.slug}`)}
                     >
                       More Details
-                    </button>
+                    </button> */}
+                    <button
+                    className="btn btn-primary ms-1"
+                    onClick={() => navigate(`/product/${p.slug}`)}
+                  >
+                    More Details
+                  </button>
                   </div>
                 </div>
               ))}

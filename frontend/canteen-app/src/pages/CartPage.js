@@ -70,7 +70,7 @@ const CartPage = () => {
       setLoading(false);
       localStorage.removeItem("cart");
       setCart([]);
-      navigate(`${config.API_BASE_URL}/dashboard/user/orders`);
+      navigate("/dashboard/user/orders");
       toast.success("Payment Completed Successfully ");
     } catch (error) {
       console.log(error);
@@ -139,7 +139,7 @@ const CartPage = () => {
                   <h5>{auth?.user?.rollnumber}</h5>
                   <button
                     className="btn btn-outline-warning"
-                    onClick={() => navigate(`${config.API_BASE_URL}/dashboard/user/profile`)}
+                    onClick={() => navigate("/dashboard/user/profile")}
                   >
                     Update Rollnumber
                   </button>
@@ -150,7 +150,7 @@ const CartPage = () => {
                 {auth?.token ? (
                   <button
                     className="btn btn-outline-warning"
-                    onClick={() => navigate(`${config.API_BASE_URL}/dashboard/user/profile`)}
+                    onClick={() => navigate("/dashboard/user/profile")}
                   >
                     Update Rollnumber
                   </button>
