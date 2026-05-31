@@ -18,14 +18,7 @@ connectDB();
 const app = express();
 
 //middlewares
-app.use(cors({
-  origin: [
-    "http://localhost:3000", 
-    "https://phenomenal-entremet-f706f9.netlify.app/"
-  ], 
-  methods: ["GET", "POST", "PUT", "DELETE"], 
-  credentials: true
-}));
+app.use(cors());
 app.use(express.json());
 app.use(morgan("dev"));
   // app.use(express.static(path.join(__dirname, '../frontend/canteen-app/build'))) //new
@@ -39,7 +32,7 @@ app.use("/api/v1/product", productRoutes);
 
 
 //rest api
-app.use('/', function(req, res){
+app.use('*', function(req, res){
 //  res.sendFile(path.join(__dirname, '../frontend/canteen-app/build/index.html'))
 })
 app.get("/", (req, res) => {
