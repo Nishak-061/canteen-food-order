@@ -37,7 +37,7 @@ app.use('*', function(req, res){
 })
 app.get("/", (req, res) => {
   res.send({
-    message: "welcom",
+    message: "welcome",
   });
 });
 

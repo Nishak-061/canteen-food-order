@@ -6,6 +6,7 @@ import config from "../config";
 
 const Categories = () => {
   const categories = useCategory();
+  
 
   return (
     <Layout title={"All Categories"}>
@@ -26,7 +27,10 @@ const Categories = () => {
                     {c.name}
                   </h5>
                   <Link to={`${config.API_BASE_URL}/category/${c.slug}`} className="btn btn-danger">
+                  <Link to={`/category/${c.slug}`} className="btn btn-danger"> 
+
                     View Category
+                    </Link>
                   </Link>
                 </div>
               </div>
