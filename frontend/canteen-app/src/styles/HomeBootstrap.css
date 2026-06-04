@@ -1,42 +1,398 @@
-.hero-header{
-    background: linear-gradient(rgba(15, 23, 43, 0.9), rgba(15, 23, 43, 0.9)), url(../images/bg.png);
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
+/* ============================================================
+   HomeBootstrap.css — Warm Organic Theme (Pinterest-inspired)
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=DM+Sans:wght@300;400;500&display=swap');
+
+/* ── CSS Variables ─────────────────────────────────────────── */
+:root {
+  --cream:      #f5efe6;
+  --cream-dark: #ede4d6;
+  --sand:       #d9c8b0;
+  --warm-brown: #6b4f35;
+  --olive:      #7a7a45;
+  --terracotta: #c96a3b;
+  --orange-btn: #d4763b;
+  --text-dark:  #2e2010;
+  --text-mid:   #5a4530;
+  --text-light: #9a8470;
+  --white:      #ffffff;
+  --card-shadow: 0 8px 32px rgba(107,79,53,0.12);
+  --radius-lg:  24px;
+  --radius-sm:  12px;
 }
 
-.hero-header img{
-    animation: imgRotate 20s linear infinite;
-}
-@keyframes imgRotate {
-    100%{
-        transform: rotate(360deg);
-    }
+/* ── Base Reset ─────────────────────────────────────────────── */
+body {
+  background-color: var(--cream);
+  font-family: 'DM Sans', sans-serif;
+  color: var(--text-dark);
 }
 
-.btn{
-    font-family: 'Nunito', sans-serif;
-    font-weight: 500;
-    text-transform: uppercase;
-    transition: 0.10s;
-}
-.btn-primary,
-.btn-secondary{
-    color: #fff;
+/* ── HERO SECTION ───────────────────────────────────────────── */
+.hero-header {
+  background-color: var(--cream) !important;
+  position: relative;
+  overflow: hidden;
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+  padding: 60px 0 40px !important;
 }
 
-/*-------service item------*/
-.service-item{
-    box-shadow: 0 0 45px rgba(0,0,0,0.08);
-    transition: 0.5s;
+/* Organic blob background shape */
+.hero-header::before {
+  content: '';
+  position: absolute;
+  top: -80px;
+  right: -120px;
+  width: 560px;
+  height: 560px;
+  background: radial-gradient(ellipse at 60% 40%, #e8d5b8 0%, #f5efe6 70%);
+  border-radius: 60% 40% 55% 45% / 50% 60% 40% 50%;
+  z-index: 0;
+  opacity: 0.9;
 }
 
-.service-item:hover{
-    background: var(--trimary);
+.hero-header::after {
+  content: '';
+  position: absolute;
+  bottom: -60px;
+  left: -80px;
+  width: 360px;
+  height: 360px;
+  background: radial-gradient(ellipse, #e3d4bb 0%, transparent 70%);
+  border-radius: 50% 50% 40% 60% / 60% 40% 60% 40%;
+  z-index: 0;
+  opacity: 0.6;
 }
-.service-item *{
-    transition: 0.5s;
+
+.hero-header .container {
+  position: relative;
+  z-index: 1;
 }
-.service-item:hover *{
-    color: var(--light) !important;
+
+/* Hero text */
+.hero-header h1.display-3 {
+  font-family: 'Playfair Display', serif !important;
+  font-weight: 800 !important;
+  color: var(--warm-brown) !important;
+  font-size: clamp(2.2rem, 5vw, 3.6rem) !important;
+  line-height: 1.15 !important;
+  letter-spacing: -0.5px;
 }
+
+.hero-header p.text-white {
+  color: var(--text-mid) !important;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  max-width: 400px;
+}
+
+/* Hero CTA button */
+.hero-header .btn-warning {
+  background-color: var(--olive) !important;
+  border: none !important;
+  color: var(--white) !important;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  padding: 14px 36px !important;
+  border-radius: 50px !important;
+  box-shadow: 0 4px 18px rgba(122,122,69,0.25);
+  transition: background 0.3s, transform 0.2s;
+}
+
+.hero-header .btn-warning:hover {
+  background-color: var(--terracotta) !important;
+  transform: translateY(-2px);
+}
+
+/* Hero image — floating card effect */
+.hero-header .col-lg-6 img {
+  border-radius: 40% 60% 55% 45% / 45% 50% 55% 50%;
+  box-shadow: 0 24px 60px rgba(107,79,53,0.22);
+  max-width: 480px;
+  transition: transform 0.4s ease;
+}
+
+.hero-header .col-lg-6 img:hover {
+  transform: scale(1.03) rotate(-1deg);
+}
+
+/* ── NAVBAR overrides ───────────────────────────────────────── */
+.navbar {
+  background-color: var(--cream) !important;
+  border-bottom: 1px solid var(--sand);
+}
+
+.navbar-brand,
+.nav-link {
+  color: var(--text-dark) !important;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+}
+
+.navbar .btn {
+  background-color: var(--orange-btn) !important;
+  border: none !important;
+  color: var(--white) !important;
+  border-radius: 50px !important;
+  padding: 8px 22px !important;
+  font-size: 0.85rem;
+}
+
+/* ── SERVICE CARDS ──────────────────────────────────────────── */
+.service-item {
+  background-color: var(--white) !important;
+  border-radius: var(--radius-lg) !important;
+  box-shadow: var(--card-shadow);
+  border: 1px solid var(--cream-dark);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.service-item::before {
+  content: '';
+  display: block;
+  height: 5px;
+  background: linear-gradient(90deg, var(--terracotta), var(--olive));
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+.service-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 48px rgba(107,79,53,0.18);
+}
+
+.service-item h5 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  color: var(--warm-brown);
+  font-size: 1.1rem;
+}
+
+.service-item p {
+  color: var(--text-light);
+  font-size: 0.88rem;
+  line-height: 1.65;
+}
+
+.service-item .fa {
+  color: var(--terracotta) !important;
+}
+
+/* ── ABOUT SECTION ──────────────────────────────────────────── */
+.container-xxl.py-5 {
+  background-color: var(--cream);
+}
+
+.section-title {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+.section-title.text-danger {
+  color: var(--terracotta) !important;
+}
+
+.section-title.text-warning {
+  color: var(--olive) !important;
+}
+
+h1.mb-4 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.container p.mb-4 {
+  color: var(--text-mid);
+  line-height: 1.75;
+  font-size: 0.93rem;
+}
+
+/* About stat counters */
+.border-warning {
+  border-color: var(--terracotta) !important;
+}
+
+.text-warning {
+  color: var(--terracotta) !important;
+}
+
+/* About images — stacked collage */
+.row.g-3 img {
+  border-radius: var(--radius-lg);
+  box-shadow: 0 8px 24px rgba(107,79,53,0.15);
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.row.g-3 img:hover {
+  transform: scale(1.04) rotate(1deg);
+}
+
+/* ── MENU SECTION ───────────────────────────────────────────── */
+h1.mb-5 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.nav-pills .nav-item p {
+  border-radius: var(--radius-sm);
+  padding: 10px 16px;
+  transition: background 0.2s;
+}
+
+.nav-pills .nav-item p:hover {
+  background-color: var(--cream-dark);
+}
+
+.nav-pills .fa {
+  color: var(--terracotta) !important;
+}
+
+.border-bottom {
+  border-color: var(--sand) !important;
+}
+
+/* ── PRODUCT CARDS (HomePage.js) ────────────────────────────── */
+.card {
+  border-radius: var(--radius-lg) !important;
+  border: none !important;
+  box-shadow: var(--card-shadow) !important;
+  background-color: var(--white) !important;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 40px rgba(107,79,53,0.18) !important;
+}
+
+.card-img-top {
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0 !important;
+  object-fit: cover;
+  height: 180px;
+}
+
+.card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--warm-brown);
+}
+
+.card-text small {
+  color: var(--text-light);
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+.card-text {
+  color: var(--terracotta);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.card .btn-primary {
+  background-color: var(--olive) !important;
+  border: none !important;
+  border-radius: 50px !important;
+  font-size: 0.78rem;
+  padding: 6px 14px !important;
+  color: var(--white) !important;
+  transition: background 0.2s;
+}
+
+.card .btn-primary:hover {
+  background-color: var(--warm-brown) !important;
+}
+
+.card .btn-danger {
+  background-color: var(--terracotta) !important;
+  border: none !important;
+  border-radius: 50px !important;
+  font-size: 0.78rem;
+  padding: 6px 14px !important;
+  color: var(--white) !important;
+  transition: background 0.2s;
+}
+
+.card .btn-danger:hover {
+  background-color: var(--warm-brown) !important;
+}
+
+/* ── FILTER SIDEBAR ─────────────────────────────────────────── */
+.col-md-2 h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  color: var(--warm-brown);
+}
+
+.ant-checkbox-wrapper,
+.ant-radio-wrapper {
+  color: var(--text-mid) !important;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.88rem;
+}
+
+.btn-danger {
+  background-color: var(--terracotta) !important;
+  border: none !important;
+  border-radius: 50px !important;
+  font-size: 0.78rem;
+}
+
+/* ── OUR MENU HEADING ───────────────────────────────────────── */
+h1 .fa-cutlery {
+  color: var(--terracotta) !important;
+}
+
+/* ── LOAD MORE BUTTON ───────────────────────────────────────── */
+.btn-warning {
+  background-color: var(--orange-btn) !important;
+  border: none !important;
+  color: var(--white) !important;
+  border-radius: 50px !important;
+  padding: 10px 30px !important;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.btn-warning:hover {
+  background-color: var(--warm-brown) !important;
+  transform: translateY(-2px);
+}
+
+/* ── SEARCH BAR ─────────────────────────────────────────────── */
+input[type="search"],
+.form-control {
+  border-radius: 50px !important;
+  border: 1.5px solid var(--sand) !important;
+  background-color: var(--white) !important;
+  color: var(--text-dark) !important;
+  padding: 8px 20px !important;
+  font-family: 'DM Sans', sans-serif;
+}
+
+input[type="search"]:focus,
+.form-control:focus {
+  box-shadow: 0 0 0 3px rgba(201,106,59,0.15) !important;
+  border-color: var(--terracotta) !important;
+  outline: none !important;
+}
+
+/* ── SCROLLBAR ──────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--cream); }
+::-webkit-scrollbar-thumb { background: var(--sand); border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: var(--terracotta); }

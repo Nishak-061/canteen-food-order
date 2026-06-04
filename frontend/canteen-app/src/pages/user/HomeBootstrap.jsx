@@ -11,9 +11,17 @@ import WOW from 'wowjs'
 
 
 class HomeBootstrap extends React.Component {
-    componentDidMount(){
-        new WOW.WOW().init();
-    }
+    componentDidUpdate() {
+  this.wow.sync();  // re-scan for new animated elements
+}
+
+componentDidMount() {
+  this.wow = new WOW.WOW();
+  this.wow.init();
+}
+    // componentDidMount(){
+    //     new WOW.WOW().init();
+    // }
     render() {
         return (
             <div className='container-xxl bg-white p-0'>
@@ -153,32 +161,32 @@ class HomeBootstrap extends React.Component {
                       <div className='tab-class text-center wow animate__animated animate__fadeInUp' data-wow-delay="0.1s">
                         <ul className='nav nav-pills d-inline-flex justify-content-center border-bottom mb-5'>
                             <li className='nav-item'>
-                                <p className='d-flex align-items-center text-start mx-3 ms-0 pb-3' data-bs-toggle="pill">
+                                <div className='d-flex align-items-center text-start mx-3 ms-0 pb-3' data-bs-toggle="pill">
                                     <i className='fa fa-bread-slice fa-2x text-warning'></i>
                                     <div className='ps-3'>
                                         <small className='text-body'>Popular</small>
                                         <h5 className='mt-n1 mb-0 font-weight-bold'>Breakfast</h5>
                                     </div>
-                                </p>
+                                </div>
                             </li>
 
                             <li className='nav-item'>
-                                <p className='d-flex align-items-center text-start mx-3 ms-0 pb-3' data-bs-toggle="pill">
+                                <div className='d-flex align-items-center text-start mx-3 ms-0 pb-3' data-bs-toggle="pill">
                                     <i className='fa fa-hamburger fa-2x text-warning'></i>
                                     <div className='ps-3'>
                                         <small className='text-body'>Special</small>
                                         <h5 className='mt-n1 mb-0 font-weight-bold'>Lunch</h5>
                                     </div>
-                                </p>
+                                </div>
                             </li>
                             <li className='nav-item'>
-                                <p className='d-flex align-items-center text-start mx-3 ms-0 pb-3' data-bs-toggle="pill">
+                                <div className='d-flex align-items-center text-start mx-3 ms-0 pb-3' data-bs-toggle="pill">
                                     <i className='fa fa-pizza-slice fa-2x text-warning'></i>
                                     <div className='ps-3'>
                                         <small className='text-body'>Lovely</small>
                                         <h5 className='mt-n1 mb-0 font-weight-bold'>Snacks</h5>
                                     </div>
-                                </p>
+                                </div>
                             </li>
 
                         </ul>
